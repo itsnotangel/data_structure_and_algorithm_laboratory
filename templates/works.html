@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="tool-hub">
+  <div class="welcome-text">
+    <h1>Welcome to my programming works!</h1>
+    <p>Select a tool below to get started.</p>
+  </div>
+
+  <!-- Tool Menu Grid -->
+  <div class="menu-grid">
+    <a href="{{ url_for('uppercase') }}" class="menu-card">
+      <div class="card-content">
+        <h2>Uppercase Converter</h2>
+        <p>Convert your text instantly into uppercase format.</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('circle') }}" class="menu-card">
+      <div class="card-content">
+        <h2>Area of Circle</h2>
+        <p>Compute the area of a circle using the radius value.</p>
+      </div>
+    </a>
+
+    <a href="{{ url_for('triangle') }}" class="menu-card">
+      <div class="card-content">
+        <h2>Area of Triangle</h2>
+        <p>Find the area of a triangle by entering base and height.</p>
+      </div>
+    </a>
+  </div>
+</section>
+{% endblock %}

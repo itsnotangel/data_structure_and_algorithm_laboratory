@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="profile-hero">
+  <div class="hero-wrapper">
+    <!-- Left: Info -->
+    <div class="hero-left">
+      <h2 class="intro" style="color: white;"> Hello! 👋 </h2>
+      <h1 class="name">I'm <span>Angel Laika Lara Clarito</span></h1>
+      <h3 class="title">Computer Engineering Undergraduate</h3>
+      <p class="bio">
+        I’m a second-year <span class="highlight">Computer Engineering</span>,
+        student who’s always curious about how things work. I love tinkering with both <span class="highlight">hardware and software,</span>
+        figuring out how they all come together. At the end of the day, I just enjoy learning, experimenting, and turning ideas into real-world tech.
+      </p>
+
+      <div class="extra-info">
+        <p><strong>🎓 Program:</strong> Bachelor of Science in Computer Engineering</p>
+        <p><strong>🏫 University:</strong> Polytechnic University of the Philippines - Manila</p>
+        <p><strong>💡 Interests:</strong> Coding, Cooking, Singing, Dancing</p>
+        <p><strong>📍 Location:</strong> Taguig, Philippines</p>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="hero-right">
+      <div class="image-glow">
+        <img src="{{ url_for('static', filename='clarito.png') }}" alt="Angel Laika Clarito">
+        <div class="glow-ring"></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

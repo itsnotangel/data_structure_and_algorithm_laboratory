@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="tool-page">
+    <a href="{{ url_for('works') }}" class="btn btn-back">⬅️ Back</a>
+
+    <h1 class="tool-title">Area of Circle</h1>
+    <p class="tool-desc">Enter the radius below to calculate the area.</p>
+
+    <form method="POST" class="form-card">
+        <input type="number" step="any" name="radius" placeholder="Radius" required>
+        <button type="submit" class="btn btn-primary">Calculate</button>
+    </form>
+
+    {% if area %}
+    <div class="result-card glow">
+        <h3>Result:</h3>
+        <p>Area = {{ area|round(2) }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

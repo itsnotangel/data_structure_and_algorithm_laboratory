@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="tool-page">
+    <a href="{{ url_for('works') }}" class="btn btn-back">⬅️ Back</a>
+
+    <h1 class="tool-title">Uppercase Converter</h1>
+    <p class="tool-desc">Enter a string below to convert it to uppercase.</p>
+
+    <form method="POST" class="form-card">
+        <input type="text" name="inputString" placeholder="Enter text..." required>
+        <button type="submit" class="btn btn-primary">Convert</button>
+    </form>
+
+    {% if result %}
+    <div class="result-card glow">
+        <h3>Result:</h3>
+        <p>{{ result }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

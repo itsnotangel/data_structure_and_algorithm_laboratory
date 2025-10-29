@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import re
 
 app = Flask(__name__)
 
@@ -51,6 +52,46 @@ def triangle():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+# -------------------- INFIX TO POSTFIX CONVERTER --------------------
+
+# Helper function using the Shunting Yard Algorithm
+def infix_to_postfix(expression):
+    tokens = re.findall(r'\d+\.\d+|\d+|[A-Za-z]+|[+\-*/^()]', expression)
+    precedence = {'+':1, '-':1, '*':2, '/':2, '^':3}
+    output = []
+    stack = []
+
+    for token in tokens:
+        if re.match(r'^[A-Za-z0-9.]+$', token):  # Operand (number or variable)
+            output.append(token)
+        elif token == '(':
+            stack.append(token)
+        elif token == ')':
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            if stack:
+                stack.pop()
+        else:
+            while (stack and stack[-1] != '(' and
+                   precedence.get(token, 0) <= precedence.get(stack[-1], 0)):
+                output.append(stack.pop())
+            stack.append(token)
+
+    while stack:
+        output.append(stack.pop())
+
+    return ' '.join(output)
+
+@app.route('/infix_to_postfix', methods=['GET', 'POST'])
+def infix_to_postfix_page():
+    result = None
+    if request.method == 'POST':
+        infix_expr = request.form.get('infixExpression', '')
+        result = infix_to_postfix(infix_expr)
+    return render_template('infix_to_postfix.html', result=result)
+
+# -------------------- RUN APP --------------------
 
 if __name__ == "__main__":
     app.run(debug=True)
